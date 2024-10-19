@@ -28,7 +28,7 @@ const HeaderDropDown = ({ showDrawer, setShowDrawer, drawer = true }) => {
             title: 'Profile',
             label: (
                 <Link className="flex items-center gap-4">
-                    <span className={`${itemIsActive == 'Profile' ? 'active' : ''}`}>Profile</span>
+                    <span className={`${itemIsActive == 'Profile' ? 'text-white' : ''}`}>Profile</span>
                 </Link>
             ),
             onClick: () => navItemNavigator(1, 'Profile'),
@@ -43,7 +43,7 @@ const HeaderDropDown = ({ showDrawer, setShowDrawer, drawer = true }) => {
             title: 'My Order',
             label: (
                 <Link className="flex items-center gap-4">
-                    <span className={`${itemIsActive == 'My Order' ? 'active' : ''}`}>My order</span>
+                    <span className={`${itemIsActive == 'My Order' ? 'text-white' : ''}`}>My order</span>
                 </Link>
             ),
             onClick: () => navItemNavigator(2, 'My Order'),
@@ -58,7 +58,7 @@ const HeaderDropDown = ({ showDrawer, setShowDrawer, drawer = true }) => {
             title: 'Change Password',
             label: (
                 <Link className="flex items-center gap-4">
-                    <span className={`${itemIsActive == 'Change Password' ? 'active' : ''}`}>Change Password</span>
+                    <span className={`${itemIsActive == 'Change Password' ? 'text-white' : ''}`}>Change Password</span>
                 </Link>
             ),
             onClick: () => navItemNavigator(3, 'Change Password'),
@@ -73,7 +73,7 @@ const HeaderDropDown = ({ showDrawer, setShowDrawer, drawer = true }) => {
             title: 'Logout',
             label: (
                 <Link className="flex items-center gap-4">
-                    <span className={`${itemIsActive == 'Logout' ? 'active' : ''}`}>Logout</span>
+                    <span className={`${itemIsActive == 'Logout' ? 'text-white' : ''}`}>Logout</span>
                 </Link>
             ),
             onClick: () => navItemNavigator(4, 'Logout'),

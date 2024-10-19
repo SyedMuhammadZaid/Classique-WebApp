@@ -3,6 +3,7 @@ import './index.css'
 import { Col, Drawer, Layout, Row } from 'antd'
 import { Content, Footer, Header } from 'antd/es/layout/layout'
 import logo from '../Assets/images/logo.png'
+import logo2 from '../Assets/images/logo2.png'
 import BasicButton from '../Components/basicButton'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { IoMenu } from "react-icons/io5";
@@ -29,6 +30,8 @@ const items = [
     }
 ]
 
+const transparentBgRoutes = ['/BecomeTourVendor', '/ContactUs', '/CarRentalFranchise', '/AboutUs', '/Profile']
+
 const AppLayout = ({ children }) => {
 
     const navigate = useNavigate();
@@ -37,16 +40,25 @@ const AppLayout = ({ children }) => {
     const [showDrawer, setShowDrawer] = useState(false);
     const [itemIsActive, setItemIsActive] = useState('Home');
     const [isLogin, setIsLogin] = useState(false);
+    const [isTransparentBg, setIsTransparentBg] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
     useEffect(() => {
         if (location.pathname) {
             if (location.pathname == '/') {
-                setItemIsActive('Home')
+                setItemIsActive('Home');
+                setIsTransparentBg(false);
             }
             else {
                 let selectedItem = items.find((item) => '/' + item?.title.replaceAll(' ', '').replace('?', '') == location.pathname);
                 if (selectedItem) {
                     setItemIsActive(selectedItem?.title)
+                    if (transparentBgRoutes.includes(location.pathname)) {
+                        setIsTransparentBg(true);
+                    }
+                    else {
+                        setIsTransparentBg(false);
+                    }
                 } else {
                     setItemIsActive('')
                 }
@@ -62,17 +74,21 @@ const AppLayout = ({ children }) => {
         }
     }
 
+    const basicButtonHandler = () => {
+
+    }
+
     return (
         <>
             <Layout className='h-fit'>
-                <div className='bg-img1 relative py-3'>
+                <div className='bg-img1 relative'>
                     <div className='overlay'></div>
-                    <Header className='bg-transparent text-white content'>
+                    <Header className={`${!isTransparentBg ? 'bg-transparent text-white' : 'bg-white text-black box-shadow'} content py-2 px-4`}>
                         <Row align={'middle'} justify={'space-between'}>
                             <Col lg={4} className=''>
-                                <img src={logo} className='h-12 w-48' />
+                                <img src={isTransparentBg ? logo2 : logo} className='h-12 w-48 cursor-pointer' onClick={() => navigate('/')} />
                             </Col>
-                            <Col lg={18} className=''>
+                            <Col lg={18} className='flex items-center justify-end 1210px:block'>
                                 <div className='hidden 1210px:flex items-center justify-around'>
                                     <ul className={`flex items-center w-5/6 gap-6 ${!isLogin && 'justify-evenly'}`}>
                                         {
@@ -91,7 +107,7 @@ const AppLayout = ({ children }) => {
                                     {
                                         isLogin ?
                                             <HeaderDropDown drawer={false} /> :
-                                            <BasicButton text='Sign in' />
+                                            <BasicButton text='Sign in' basicButtonHandler={basicButtonHandler} />
                                     }
                                 </div>
                                 <div className='1210px:hidden'>
@@ -100,16 +116,19 @@ const AppLayout = ({ children }) => {
                             </Col>
                         </Row>
                     </Header>
-                    <div className='hero-section content h-[80vh] flex items-center justify-center'>
-                        showing some images here...
-                    </div>
+                    {
+                        !isTransparentBg &&
+                        <div className='hero-section content h-[80vh] flex items-center justify-center'>
+                            showing some images here...
+                        </div>
+                    }
                 </div>
-                <Content className='content h-fit'>
+                <Content className='content h-fit px-4'>
                     <div className=''>
                         {children}
                     </div>
                 </Content>
-                <Footer className='bg-white'>
+                <Footer className='bg-white px-4'>
                     testing
                 </Footer>
             </Layout>
@@ -117,7 +136,12 @@ const AppLayout = ({ children }) => {
             <Drawer
                 title={
                     <div className='flex items-center justify-center'>
-                        <HeaderDropDown showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
+                        {
+                            isLogin ?
+                                <HeaderDropDown showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
+                                :
+                                <BasicButton text='Sign in' />
+                        }
                     </div>
                 }
                 placement={'right'}
@@ -139,9 +163,6 @@ const AppLayout = ({ children }) => {
                         })
                     }
                 </ul>
-                <div className='mt-10'>
-                    <BasicButton text='Sign in' />
-                </div>
             </Drawer>
         </>
     )
