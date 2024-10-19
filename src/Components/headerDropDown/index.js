@@ -1,8 +1,9 @@
-import { Avatar, Dropdown, Tooltip } from 'antd'
+import { Avatar, Col, Dropdown, Modal, Row, Tooltip } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { CaretDownOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './index.css'
+import ChangePassword from '../../Pages/changePassword';
 
 const HeaderDropDown = ({ showDrawer, setShowDrawer, drawer = true }) => {
 
@@ -10,11 +11,13 @@ const HeaderDropDown = ({ showDrawer, setShowDrawer, drawer = true }) => {
     const location = useLocation();
 
     const [itemIsActive, setItemIsActive] = useState('');
+    const [changePasswordModal, setChangePasswordModal] = useState(false);
 
     const navItemNavigator = (key, item) => {
         let selectedItem = item?.replaceAll(' ', '');
         if (item) {
             navigate(`/${selectedItem}`);
+            item == 'Change Password' && setChangePasswordModal(true)
         }
 
         setItemIsActive(item);
@@ -93,20 +96,38 @@ const HeaderDropDown = ({ showDrawer, setShowDrawer, drawer = true }) => {
     }, [location.pathname])
 
     return (
-        <Dropdown
-            menu={{ items, activeKey: itemIsActive }}
-            className="group w-44 h-10 flex items-center justify-between px-3 py-3 cursor-pointer primary-btn primary-btn-color"
-        >
-            <div className="flex gap-1">
-                <div className="w-10 h-10 flex items-center justify-center">
-                    <Avatar icon={<UserOutlined />} className='flex items-center justify-center' shape="circle" />
+        <>
+            <Dropdown
+                menu={{ items, activeKey: itemIsActive }}
+                className="group w-44 h-10 flex items-center justify-between px-3 py-3 cursor-pointer primary-btn primary-btn-color"
+            >
+                <div className="flex gap-1">
+                    <div className="w-10 h-10 flex items-center justify-center">
+                        <Avatar icon={<UserOutlined />} className='flex items-center justify-center' shape="circle" />
+                    </div>
+                    <span className="text-ellipsis truncate">
+                        <p className='font-medium text-sm tracking-wider'>John Doe</p>
+                    </span>
+                    <CaretDownOutlined className="" />
                 </div>
-                <span className="text-ellipsis truncate">
-                    <p className='font-medium text-sm tracking-wider'>John Doe</p>
-                </span>
-                <CaretDownOutlined className="" />
-            </div>
-        </Dropdown>
+            </Dropdown>
+
+            {
+                changePasswordModal &&
+                <Modal
+                    open={changePasswordModal}
+                    onCancel={() => setChangePasswordModal(false)}
+                    width={400}
+                    centered
+                    footer={false}
+                >
+                    <Row justify={'center'} className='flex flex-col items-center gap-4 px-4 w-full'>
+                        <ChangePassword />
+                    </Row>
+                </Modal>
+            }
+
+        </>
     )
 }
 

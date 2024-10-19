@@ -31,6 +31,10 @@ body {
   color: black !important;
 }
 
+.submission-btn{
+  background-color: #43D6E5 !important;
+}
+
 .bg-img1 {
   background-image: url('../src/Assets/images/homeBg.png');
   width: 100%;
@@ -55,11 +59,42 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2); /* Black with 40% opacity */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Black with 40% opacity */
 }
 
 .content {
   position: relative;
   z-index: 1;
 
+}
+
+
+/* // antd custom styling */
+
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  background: #FFDA32 !important;
+  color: black !important;
+  border: #FFDA32 !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before{
+  background-color: #FFDA32 !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover::before{
+  background-color: none !important;
+}
+
+.ant-radio-button-wrapper:hover{
+  color: initial !important;
+}
+
+
+.ant-otp  .ant-otp-input{
+  padding: 10px 0px !important;
+}
+
+.ant-input-filled:focus, .ant-input-filled:focus-within{
+  border: 1px solid #43D6E5 !important;
 }

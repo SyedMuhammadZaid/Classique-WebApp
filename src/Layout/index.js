@@ -8,6 +8,7 @@ import BasicButton from '../Components/basicButton'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { IoMenu } from "react-icons/io5";
 import HeaderDropDown from '../Components/headerDropDown'
+import SignInSignUpModal from '../Pages/auth/SignInSignup'
 
 const items = [
     {
@@ -75,7 +76,10 @@ const AppLayout = ({ children }) => {
     }
 
     const basicButtonHandler = () => {
-
+        setShowLoginModal(!showLoginModal)
+        if(showDrawer){
+            setShowDrawer(false)
+        }
     }
 
     return (
@@ -140,7 +144,7 @@ const AppLayout = ({ children }) => {
                             isLogin ?
                                 <HeaderDropDown showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
                                 :
-                                <BasicButton text='Sign in' />
+                                <BasicButton text='Sign in' basicButtonHandler={basicButtonHandler} />
                         }
                     </div>
                 }
@@ -164,6 +168,9 @@ const AppLayout = ({ children }) => {
                     }
                 </ul>
             </Drawer>
+            {
+                showLoginModal && <SignInSignUpModal showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
+            }
         </>
     )
 }
