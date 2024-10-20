@@ -127,12 +127,12 @@ const AppLayout = ({ children }) => {
                         </div>
                     }
                 </div>
-                <Content className='content h-fit px-4'>
+                <Content className='content h-fit bg-white pb-6'>
                     <div className=''>
                         {children}
                     </div>
                 </Content>
-                <Footer className='bg-white px-4'>
+                <Footer className='bg-red px-4'>
                     testing
                 </Footer>
             </Layout>
