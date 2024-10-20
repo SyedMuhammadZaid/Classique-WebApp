@@ -51,14 +51,14 @@ const SignUp = ({ setAuthType }) => {
                 placeHolder: 'Enter your Number:',
                 inputClassName: 'h-10 rounded-md outline-none border border-gray-300 py-2 px-3',
             },
-            {
-                type: 'custom',
-                name: 'location',
-                label: 'Location:',
-                customComponent: <LocationPicker />,
-                inputClassName: 'h-10 rounded-md outline-none border border-gray-300 py-2 px-3 w-full',
-                style: { width: '100%' }
-            },
+            // {
+            //     type: 'custom',
+            //     name: 'location',
+            //     label: 'Location:',
+            //     customComponent: <LocationPicker />,
+            //     inputClassName: 'h-10 rounded-md outline-none border border-gray-300 py-2 px-3 w-full',
+            //     style: { width: '100%' }
+            // },
             {
                 type: 'password',
                 name: 'password',
