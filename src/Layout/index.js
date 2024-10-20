@@ -5,10 +5,20 @@ import { Content, Footer, Header } from 'antd/es/layout/layout'
 import logo from '../Assets/images/logo.png'
 import logo2 from '../Assets/images/logo2.png'
 import BasicButton from '../Components/basicButton'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { IoMenu } from "react-icons/io5";
 import HeaderDropDown from '../Components/headerDropDown'
 import SignInSignUpModal from '../Pages/auth/SignInSignup'
+import icon from '../Assets/images/icon.png'
+import lassique from '../Assets/images/lassique.png'
+import masterCard from '../Assets/images/masterCard.png'
+import visa from '../Assets/images/Visa.png'
+import fb from '../Assets/images/fb.png'
+import insta from '../Assets/images/insta.png'
+import twitter from '../Assets/images/twitter.png'
+import pintrest from '../Assets/images/pintrest.png'
+import dayjs from 'dayjs'
+
 
 const items = [
     {
@@ -77,7 +87,7 @@ const AppLayout = ({ children }) => {
 
     const basicButtonHandler = () => {
         setShowLoginModal(!showLoginModal)
-        if(showDrawer){
+        if (showDrawer) {
             setShowDrawer(false)
         }
     }
@@ -132,8 +142,51 @@ const AppLayout = ({ children }) => {
                         {children}
                     </div>
                 </Content>
-                <Footer className='bg-red px-4'>
-                    testing
+                <Footer className='bg-[#13253F] w-full'>
+                    <>
+                        <Row className='max-w-[83%] w-full mx-auto mb-4'>
+                            <Col lg={7} md={7} sm={24} xs={24} className='flex flex-col gap-1 mb-4 md:mb-0'>
+                                <img className='w-12 h-12' src={icon} />
+                                <img className='w-48 h-12' src={lassique} />
+                            </Col>
+                            <Col lg={5} md={5} sm={12} xs={24} className='flex flex-col gap-2 mb-4 md:mb-0'>
+                                <h3 className='text-[#FFFFFFCC] font-semibold'>Company</h3>
+                                <Link className='text-[#FFFFFF99]' >About Us</Link>
+                                <Link className='text-[#FFFFFF99]'>Blog</Link>
+                                <Link className='text-[#FFFFFF99]'>Become Tour Vendor?</Link>
+                                <Link className='text-[#FFFFFF99]'>Car Rental Franchise</Link>
+                            </Col>
+                            <Col lg={5} md={5} sm={12} xs={24} className='flex flex-col gap-2 mb-4 md:mb-0'>
+                                <h3 className='text-[#FFFFFFCC] font-semibold'>Help</h3>
+                                <Link className='text-[#FFFFFF99]' >Contact Us</Link>
+                                <Link className='text-[#FFFFFF99]'>FAQs</Link>
+                                <Link className='text-[#FFFFFF99]'>Terms & Conditions</Link>
+                                <Link className='text-[#FFFFFF99]'>Privacy Policy</Link>
+                            </Col>
+                            <Col lg={6} md={6} sm={12} xs={24} className='flex flex-col gap-2'>
+                                <h3 className='text-[#FFFFFFCC] font-semibold'>Payment methods possible</h3>
+                                <div className='flex items-center gap-2'>
+                                    <img src={masterCard} />
+                                    <img src={visa} />
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row className='bg-[#00000033] max-w-[100%] py-2'>
+                            <div className='max-w-[83%] w-full mx-auto flex items-center gap-2 justify-between'>
+                                <Col lg={17} md={17} sm={12} xs={24}>
+                                    <p className='text-[#FFFFFF99]'>Copyright {dayjs()?.year()} Classique. All Rights Reserved</p>
+                                </Col>
+                                <Col lg={7} md={7} sm={12} xs={24}>
+                                    <div className='flex items-center gap-2'>
+                                        <img src={fb} />
+                                        <img src={twitter} />
+                                        <img src={insta} />
+                                        <img src={pintrest} />
+                                    </div>
+                                </Col>
+                            </div>
+                        </Row>
+                    </>
                 </Footer>
             </Layout>
 

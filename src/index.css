@@ -113,3 +113,8 @@ body {
 .ant-input-filled:focus-within {
   border: 1px solid #43D6E5 !important;
 }
+
+.ant-layout-footer{
+  padding: 0px !important;
+  padding-top: 2rem !important;
+}
