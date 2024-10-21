@@ -41,6 +41,7 @@ const items = [
     }
 ]
 
+const dropDownItems = ['/Profile']
 const transparentBgRoutes = ['/BecomeTourVendor', '/ContactUs', '/CarRentalFranchise', '/AboutUs', '/Profile']
 
 const AppLayout = ({ children }) => {
@@ -50,7 +51,7 @@ const AppLayout = ({ children }) => {
 
     const [showDrawer, setShowDrawer] = useState(false);
     const [itemIsActive, setItemIsActive] = useState('Home');
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
     const [isTransparentBg, setIsTransparentBg] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -70,8 +71,14 @@ const AppLayout = ({ children }) => {
                     else {
                         setIsTransparentBg(false);
                     }
-                } else {
+                }
+                else if (dropDownItems.includes(location.pathname)) {
+                    setIsTransparentBg(true);
                     setItemIsActive('')
+                }
+                else {
+                    setItemIsActive('')
+                    setIsTransparentBg(false);
                 }
             }
         }
@@ -97,7 +104,7 @@ const AppLayout = ({ children }) => {
             <Layout className='h-fit'>
                 <div className='bg-img1 relative'>
                     <div className='overlay'></div>
-                    <Header className={`${!isTransparentBg ? 'bg-transparent text-white' : 'bg-white text-black box-shadow'} content py-2 px-4`}>
+                    <Header className={`${!isTransparentBg ? 'bg-transparent text-white' : 'bg-white text-black box-shadow z-20'} content py-2 px-4`}>
                         <Row align={'middle'} justify={'space-between'}>
                             <Col lg={4} className=''>
                                 <img src={isTransparentBg ? logo2 : logo} className='h-12 w-48 cursor-pointer' onClick={() => navigate('/')} />
@@ -137,7 +144,7 @@ const AppLayout = ({ children }) => {
                         </div>
                     }
                 </div>
-                <Content className='content h-fit bg-white pb-6'>
+                <Content className='content h-fit bg-[#f3f0f0] pb-6'>
                     <div className=''>
                         {children}
                     </div>
