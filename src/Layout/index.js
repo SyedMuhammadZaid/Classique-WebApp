@@ -172,7 +172,7 @@ const AppLayout = ({ children }) => {
                             </Col>
                         </Row>
                         <Row className='bg-[#00000033] max-w-[100%] py-2'>
-                            <div className='max-w-[83%] w-full mx-auto flex items-center gap-2 justify-between'>
+                            <div className='max-w-[83%] w-full mx-auto flex items-center gap-2 justify-between flex-wrap md:flex-nowrap'>
                                 <Col lg={17} md={17} sm={12} xs={24}>
                                     <p className='text-[#FFFFFF99]'>Copyright {dayjs()?.year()} Classique. All Rights Reserved</p>
                                 </Col>

@@ -1,0 +1,10 @@
+.address-card-shadow {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.tourVendor-form-bg {
+    background-image: url('../../Assets/images/tourVendorBanner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
