@@ -151,17 +151,17 @@ const AppLayout = ({ children }) => {
                             </Col>
                             <Col lg={5} md={5} sm={12} xs={24} className='flex flex-col gap-2 mb-4 md:mb-0'>
                                 <h3 className='text-[#FFFFFFCC] font-semibold'>Company</h3>
-                                <Link className='text-[#FFFFFF99]' >About Us</Link>
-                                <Link className='text-[#FFFFFF99]'>Blog</Link>
-                                <Link className='text-[#FFFFFF99]'>Become Tour Vendor?</Link>
-                                <Link className='text-[#FFFFFF99]'>Car Rental Franchise</Link>
+                                <Link className='text-[#FFFFFF99] w-fit' >About Us</Link>
+                                <Link className='text-[#FFFFFF99] w-fit'>Blog</Link>
+                                <Link className='text-[#FFFFFF99] w-fit'>Become Tour Vendor?</Link>
+                                <Link className='text-[#FFFFFF99] w-fit'>Car Rental Franchise</Link>
                             </Col>
                             <Col lg={5} md={5} sm={12} xs={24} className='flex flex-col gap-2 mb-4 md:mb-0'>
                                 <h3 className='text-[#FFFFFFCC] font-semibold'>Help</h3>
-                                <Link className='text-[#FFFFFF99]' >Contact Us</Link>
-                                <Link className='text-[#FFFFFF99]'>FAQs</Link>
-                                <Link className='text-[#FFFFFF99]'>Terms & Conditions</Link>
-                                <Link className='text-[#FFFFFF99]'>Privacy Policy</Link>
+                                <Link className='text-[#FFFFFF99] w-fit' >Contact Us</Link>
+                                <Link className='text-[#FFFFFF99] w-fit'>FAQs</Link>
+                                <Link className='text-[#FFFFFF99] w-fit'>Terms & Conditions</Link>
+                                <Link className='text-[#FFFFFF99] w-fit'>Privacy Policy</Link>
                             </Col>
                             <Col lg={6} md={6} sm={12} xs={24} className='flex flex-col gap-2'>
                                 <h3 className='text-[#FFFFFFCC] font-semibold'>Payment methods possible</h3>
