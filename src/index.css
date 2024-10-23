@@ -94,7 +94,9 @@ body {
 
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
   background-color: #FFDA32 !important;
+  width: 0px !important;
 }
+
 
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover::before {
   background-color: none !important;
@@ -102,6 +104,22 @@ body {
 
 .ant-radio-button-wrapper:hover {
   color: initial !important;
+}
+
+.radio-parent-class .ant-radio-button-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 45px !important;
+  border-radius: 0px !important;
+}
+
+.drop-off-radio-parent-class .ant-radio-button-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 30px !important;
+  border-radius: 0px !important
 }
 
 
@@ -114,7 +132,7 @@ body {
   border: 1px solid #43D6E5 !important;
 }
 
-.ant-layout-footer{
+.ant-layout-footer {
   padding: 0px !important;
   padding-top: 2rem !important;
 }

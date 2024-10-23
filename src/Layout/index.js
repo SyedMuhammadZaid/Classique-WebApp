@@ -18,6 +18,7 @@ import insta from '../Assets/images/insta.png'
 import twitter from '../Assets/images/twitter.png'
 import pintrest from '../Assets/images/pintrest.png'
 import dayjs from 'dayjs'
+import HeroSectionSearchFilters from '../Components/heroSectionSearchFilters'
 
 
 const items = [
@@ -51,9 +52,10 @@ const AppLayout = ({ children }) => {
 
     const [showDrawer, setShowDrawer] = useState(false);
     const [itemIsActive, setItemIsActive] = useState('Home');
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(false);
     const [isTransparentBg, setIsTransparentBg] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [searchType, setSearchType] = useState('cars');
 
     useEffect(() => {
         if (location.pathname) {
@@ -102,7 +104,7 @@ const AppLayout = ({ children }) => {
     return (
         <>
             <Layout className='h-fit'>
-                <div className='bg-img1 relative'>
+                <div className={`${searchType == 'cars' ? 'bg-img1' : 'bg-img2'} relative`}>
                     <div className='overlay'></div>
                     <Header className={`${!isTransparentBg ? 'bg-transparent text-white' : 'bg-white text-black box-shadow z-20'} content py-2 px-4`}>
                         <Row align={'middle'} justify={'space-between'}>
@@ -140,7 +142,7 @@ const AppLayout = ({ children }) => {
                     {
                         !isTransparentBg &&
                         <div className='hero-section content h-[80vh] flex items-center justify-center'>
-                            showing some images here...
+                            <HeroSectionSearchFilters bgTypeNotifier={(value) => setSearchType(value)} />
                         </div>
                     }
                 </div>
