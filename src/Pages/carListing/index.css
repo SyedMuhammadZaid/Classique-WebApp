@@ -1,0 +1,6 @@
+.car-listing-bg {
+    background-image: url('../../Assets/images/carRentalBg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}

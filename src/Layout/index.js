@@ -19,6 +19,7 @@ import twitter from '../Assets/images/twitter.png'
 import pintrest from '../Assets/images/pintrest.png'
 import dayjs from 'dayjs'
 import HeroSectionSearchFilters from '../Components/heroSectionSearchFilters'
+import useGeneralStore from '../Store/generalStore'
 
 
 const items = [
@@ -43,12 +44,15 @@ const items = [
 ]
 
 const dropDownItems = ['/Profile']
-const transparentBgRoutes = ['/BecomeTourVendor', '/ContactUs', '/CarRentalFranchise', '/AboutUs', '/Profile']
+const transparentBgRoutes = ['/BecomeTourVendor', '/ContactUs', '/CarRentalFranchise', '/AboutUs', '/Profile', '/car-listing', '/car-detail', '/destination-listing', '/destination-detail', '/PopularDestinations', '/payment', '/privacy-policy', '/terms-conditions', '/faqs'];
+const innerRoutes = ['/car-listing', '/car-detail', '/destination-detail', '/destination-listing', '/payment']
+const footerRoutes = ['/privacy-policy', '/terms-conditions', '/faqs']
 
 const AppLayout = ({ children }) => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    console.log(location)
 
     const [showDrawer, setShowDrawer] = useState(false);
     const [itemIsActive, setItemIsActive] = useState('Home');
@@ -64,6 +68,7 @@ const AppLayout = ({ children }) => {
                 setIsTransparentBg(false);
             }
             else {
+                // main nav routes cases
                 let selectedItem = items.find((item) => '/' + item?.title.replaceAll(' ', '').replace('?', '') == location.pathname);
                 if (selectedItem) {
                     setItemIsActive(selectedItem?.title)
@@ -74,10 +79,22 @@ const AppLayout = ({ children }) => {
                         setIsTransparentBg(false);
                     }
                 }
+                // drop down when user is signed-in cases
                 else if (dropDownItems.includes(location.pathname)) {
                     setIsTransparentBg(true);
                     setItemIsActive('')
                 }
+                // inner routes cases
+                else if (innerRoutes.some(route => location.pathname.startsWith(route))) {
+                    setIsTransparentBg(transparentBgRoutes.some(route => location.pathname.startsWith(route)));
+                    setItemIsActive('');
+                }
+                // footer routes cases
+                else if (footerRoutes.includes(location.pathname)) {
+                    setIsTransparentBg(true);
+                    setItemIsActive(false)
+                }
+                // no case match
                 else {
                     setItemIsActive('')
                     setIsTransparentBg(false);
@@ -167,10 +184,10 @@ const AppLayout = ({ children }) => {
                             </Col>
                             <Col lg={5} md={5} sm={12} xs={24} className='flex flex-col gap-2 mb-4 md:mb-0'>
                                 <h3 className='text-[#FFFFFFCC] font-semibold'>Help</h3>
-                                <Link className='text-[#FFFFFF99] w-fit' >Contact Us</Link>
-                                <Link className='text-[#FFFFFF99] w-fit'>FAQs</Link>
-                                <Link className='text-[#FFFFFF99] w-fit'>Terms & Conditions</Link>
-                                <Link className='text-[#FFFFFF99] w-fit'>Privacy Policy</Link>
+                                <Link className='text-[#FFFFFF99] w-fit' to={'/ContactUs'}>Contact Us</Link>
+                                <Link className='text-[#FFFFFF99] w-fit' to={'/faqs'}>FAQs</Link>
+                                <Link className='text-[#FFFFFF99] w-fit' to={'/terms-conditions'}>Terms & Conditions</Link>
+                                <Link className='text-[#FFFFFF99] w-fit' to={'/privacy-policy'}>Privacy Policy</Link>
                             </Col>
                             <Col lg={6} md={6} sm={12} xs={24} className='flex flex-col gap-2'>
                                 <h3 className='text-[#FFFFFFCC] font-semibold'>Payment methods possible</h3>

@@ -2,7 +2,7 @@ import { Spin, Tooltip } from 'antd'
 import React, { useState, useRef } from 'react'
 import { LoadingOutlined } from '@ant-design/icons';
 
-const LocationPicker = ({ placeholder }) => {
+const LocationPicker = ({ placeholder, inputClasses, searchContainerClasses, searchContainerStyle }) => {
 
     const [searchValue, setSearchValue] = useState('');
     const [spin, setSpin] = useState(false);
@@ -29,11 +29,11 @@ const LocationPicker = ({ placeholder }) => {
 
     return (
         <>
-            <input type='text' className='p-2 outline-none w-full truncate pr-10' placeholder={placeholder ? placeholder : 'Select your city'} value={searchValue} onChange={inputChangeValueHandler} />
+            <input type='text' className={`p-2 outline-none w-full truncate pr-10 ${inputClasses ? inputClasses : ''}`} placeholder={placeholder ? placeholder : 'Select your city'} value={searchValue} onChange={inputChangeValueHandler} />
             <Spin spinning={false} indicator={<LoadingOutlined spin />} size='' className='absolute bottom-2 right-2 w-5 text-[#13253F]' />
             {
                 searchResults && searchResults?.length > 0 &&
-                <div className='w-full max-h-[150px] mt-[0.2px] absolute z-10 bg-[#fff] overflow-y-scroll'>
+                <div className={`w-full max-h-[150px] mt-[0.2px] absolute z-10 bg-[#fff] overflow-y-scroll ${searchContainerClasses ? searchContainerClasses : ""}`} style={searchContainerStyle}>
                     <ul className='flex flex-col gap-1'>
                         <Tooltip title={''}>
                             <li className='cursor-pointer py-2 hover:bg-[#FFDA32] hover:text-white font-semibold text-base truncate px-1' onClick={() => pickedLocation()}>Karachi, pakistan, Karachi, pakistan Karachi, pakistan Karachi, pakistan</li>

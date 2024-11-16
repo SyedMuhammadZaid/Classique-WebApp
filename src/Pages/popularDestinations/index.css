@@ -1,0 +1,14 @@
+.popular-destinations-bg {
+    background-image: url('../../Assets/images/popularDestinationBg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+.scroll-snap-x {
+    scroll-snap-type: x mandatory;
+}
+
+.scroll-snap-align-start {
+    scroll-snap-align: start;
+}

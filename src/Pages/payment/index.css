@@ -1,0 +1,21 @@
+.summary-card {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.billing-info{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.custom-fields .ant-picker-outlined:hover{
+    background-color: #F6F7F9 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.custom-fields .ant-picker-outlined:focus-within {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: #F6F7F9 !important;
+}

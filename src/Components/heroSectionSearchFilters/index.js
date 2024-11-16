@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import { LoadingOutlined } from '@ant-design/icons';
 import LocationPicker from '../locationPicker';
 import BasicButton from '../basicButton';
+import { useNavigate } from 'react-router-dom';
 
 
 const options = [
@@ -39,6 +40,8 @@ const HeroSectionSearchFilters = ({ bgTypeNotifier }) => {
     const [searchType, setSearchType] = useState('cars');
     const [differentDropOff, setDifferentDropOff] = useState('no')
 
+    const navigate = useNavigate()
+
     const radioChangeHandler = (e) => {
         setSearchType(e?.target.value)
         bgTypeNotifier(e?.target.value)
@@ -52,6 +55,13 @@ const HeroSectionSearchFilters = ({ bgTypeNotifier }) => {
 
     const timePickerChangeHandler = (e) => { }
 
+    const searchCarHandler = () => {
+        navigate('/car-listing')
+    }
+
+    const searchDestinationHandler = () => {
+        navigate('/destination-listing')
+    }
 
 
     return (
@@ -112,7 +122,7 @@ const HeroSectionSearchFilters = ({ bgTypeNotifier }) => {
                                         Drop-up Location
                                     </span>
                                     <div className='relative'>
-                                        <LocationPicker />
+                                        <LocationPicker inputClasses={'bg-red-600'} />
                                     </div>
                                 </Col>
                             }
@@ -160,7 +170,7 @@ const HeroSectionSearchFilters = ({ bgTypeNotifier }) => {
                                     />
                                     <p className='text-white text-xs sm:text-[14px]'>Different Drop-off Location?</p>
                                 </div>
-                                <BasicButton text={'Search Car'} />
+                                <BasicButton text={'Search Car'} basicButtonHandler={() => searchCarHandler()}  />
                             </Col>
                         </Row>
                         :
@@ -176,7 +186,7 @@ const HeroSectionSearchFilters = ({ bgTypeNotifier }) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <BasicButton text='Search' />
+                                    <BasicButton text='Search' basicButtonHandler={() => searchDestinationHandler()} />
                                 </div>
                             </Col>
                         </Row>

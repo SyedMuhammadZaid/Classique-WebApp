@@ -1,0 +1,47 @@
+.btn-linear-gradient {
+    background: transparent linear-gradient(257deg, #82C5BC 0%, #43D6E5 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 20px #00000014;
+}
+
+.city-detail-card {
+    box-shadow: 0px 4px 20px #00000014;
+}
+
+.city-detail-tag {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 4px 20px #00000014;
+}
+
+.trending-bg {
+    background-image: url('../../Assets/images/homeAlaskaBg.png');
+    opacity: 1;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.appDownload-bg {
+    background-image: url('../../Assets/images/appDownloadBg.png');
+    background-position: center;
+    opacity: 1;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.reviews-card {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 10px 24px 108px #0000000A;
+}
+
+.news-letter-bg{
+    background-image: url('../../Assets/images/newsLetterBg.png');
+    background-position: center;
+}
+
+
+.scroll-snap-x {
+    scroll-snap-type: x mandatory;
+}
+
+.scroll-snap-align-start {
+    scroll-snap-align: start;
+}

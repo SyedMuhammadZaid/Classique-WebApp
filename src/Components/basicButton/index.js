@@ -3,7 +3,7 @@ import React from 'react'
 
 const BasicButton = (props) => {
   return (
-    <Button className='rounded-none px-4 py-5 primary-btn-color text-lg font-bold primary-btn' onClick={props?.basicButtonHandler}>
+    <Button htmlType={props?.type || 'button'} className='rounded-none px-4 py-5 primary-btn-color text-lg font-bold primary-btn' onClick={props?.basicButtonHandler}>
         {props?.text}
     </Button>
   )
