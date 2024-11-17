@@ -1,6 +1,7 @@
-import { Button, notification } from 'antd';
-import React, { useEffect, useMemo, useState } from 'react'
+import { notification } from 'antd';
+import React, { useEffect, useMemo } from 'react'
 import useGeneralStore from '../../Store/generalStore';
+import useOnlineStatus from '../../Config/hooks/useOnlineStatus';
 
 const Context = React.createContext({
     name: 'Default',
@@ -10,7 +11,7 @@ const Toast = () => {
 
     const { message, error, info, setError, setMessage, setInfo } = useGeneralStore(state => state);
     const [api, contextHolder] = notification.useNotification();
-    const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const isOnline = useOnlineStatus()
 
     // a function to show notifications.
     const openNotification = (placement, type = 'info', msg) => {
@@ -40,34 +41,12 @@ const Toast = () => {
         }
     };
 
-
-
     // if state is false i.e no internet then this function will run.
     useEffect(() => {
         if (!isOnline) {
             openNotification('topRight', 'info', 'No internet connection')
         }
     }, [!isOnline])
-
-
-    // to render a component based on internet connectivity
-    useEffect(() => {
-        const handleOffline = () => {
-            setIsOnline(false)
-        }
-
-        const handleOnline = () => {
-            setIsOnline(true)
-        }
-        window.addEventListener('offline', handleOffline)
-        window.addEventListener('online', handleOnline)
-
-        return (() => {
-            window.removeEventListener('offline', handleOffline)
-            window.removeEventListener('online', handleOnline)
-        })
-
-    }, [])
 
     // calling of notifications.
     useEffect(() => {
