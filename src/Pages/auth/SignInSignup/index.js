@@ -25,8 +25,6 @@ const SignInSignUpModal = ({ showLoginModal, setShowLoginModal }) => {
         setAuthType(e?.target.value)
     }
 
-    console.log(authType)
-
     return (
         <div>
             <Modal
