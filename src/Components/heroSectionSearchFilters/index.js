@@ -122,7 +122,7 @@ const HeroSectionSearchFilters = ({ bgTypeNotifier }) => {
                                         Drop-up Location
                                     </span>
                                     <div className='relative'>
-                                        <LocationPicker inputClasses={'bg-red-600'} />
+                                        <LocationPicker />
                                     </div>
                                 </Col>
                             }
